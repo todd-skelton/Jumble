@@ -19,27 +19,40 @@ namespace Jumble
         /// <summary>
         /// Generates a password hash using the options set by the application
         /// </summary>
-        /// <param name="value">The password to be encypted</param>
+        /// <param name="password">The password to be encypted</param>
         /// <returns>A password hash</returns>
-        public IPasswordHash Generate(string value)
+        public PasswordHash Generate(string password)
         {
             var salt = _saltGenerator.Generate();
-            return Generate(_options.Iterations, salt, value);
+            return Generate(password, _options.Iterations, salt);
         }
 
         /// <summary>
-        /// Generates a password hash when the salt and iterations are known. Use this method for validating passwords against hashes.
+        /// Generates a password hash when the salt and iterations are known.
         /// </summary>
+        /// <param name="password">The password to be encrypted</param>
         /// <param name="iterations">Number of iterations the encryption algorithm is run</param>
         /// <param name="salt">The salt used to create the hash</param>
-        /// <param name="value">The password to be encrypted</param>
         /// <returns>A password hash</returns>
-        public IPasswordHash Generate(int iterations, byte[] salt, string value)
+        public PasswordHash Generate(string password, int iterations, byte[] salt)
         {
-            using (var rfc2898DeriveBytes = new Rfc2898DeriveBytes(value, salt, iterations))
+            using (var rfc2898DeriveBytes = new Rfc2898DeriveBytes(password, salt, iterations))
             {
                 return new PasswordHash(_options.Iterations, salt, rfc2898DeriveBytes.GetBytes(_options.Length));
             }
+        }
+
+        /// <summary>
+        /// Validates a value against a hash.
+        /// </summary>
+        /// <param name="password">The password being validated</param>
+        /// <param name="hash">The hash used to validate</param>
+        /// <returns></returns>
+        public bool Validate(PasswordHash hash, string password)
+        {
+            var valueHash = Generate(password, hash.Iterations, hash.Salt);
+
+            return hash == valueHash;
         }
     }
 }

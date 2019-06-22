@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.1.1</Version>
+    <Version>0.1.0</Version>
     <Authors>Todd Skelton</Authors>
     <Company>Kloc Limited Company</Company>
     <Product>Jumble</Product>
@@ -11,7 +11,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/xKloc/Jumble</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>Jumble log logging logger .net provider extensions email entity framework core</PackageTags>
+    <PackageTags>jumble password hash hashing security</PackageTags>
   </PropertyGroup>
 
   <Target Name="PushNuGetPackage" AfterTargets="GenerateNuspec" Condition="'$(Configuration)'=='Release'">

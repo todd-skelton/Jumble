@@ -1,8 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Jumble</RootNamespace>
+    <Title>Jumble Abstractions</Title>
+    <Description>Abstractions for the Jumble password hashing library.</Description>
+    <DocumentationFile>C:\Users\admin\Source\Repos\Jumble\src\Jumble.Abstractions\Jumble.Abstractions.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>

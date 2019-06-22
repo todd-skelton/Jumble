@@ -5,7 +5,7 @@ namespace Jumble
     /// <summary>
     /// Standard password hash implementation
     /// </summary>
-    public class PasswordHash : IPasswordHash
+    public struct PasswordHash : IEquatable<PasswordHash>
     {
         public PasswordHash(int iterations, byte[] salt, byte[] hash)
         {
@@ -14,34 +14,33 @@ namespace Jumble
             Hash = hash;
         }
 
-        public int Iterations { get; private set; }
+        /// <summary>
+        /// Number of iterations to run the hashing algorithm
+        /// </summary>
+        public int Iterations { get; }
 
-        public byte[] Hash { get; private set; }
+        /// <summary>
+        /// Hash value
+        /// </summary>
+        public byte[] Hash { get; }
 
-        public byte[] Salt { get; private set; }
+        /// <summary>
+        /// Salt used to create the hash value
+        /// </summary>
+        public byte[] Salt { get; }
 
         /// <summary>
         /// Compares this value object to another.
         /// </summary>
         /// <param name="obj">The object to compare.</param>
         /// <returns></returns>
-        public override bool Equals(object obj)
-        {
-            if(obj is IPasswordHash other)
-            {
-                return other == this;
-            }
-            return false;
-        }
+        public override bool Equals(object obj) => obj is PasswordHash other && Equals(other);
 
         /// <summary>
         /// Use this method to convert the hash into a string that can be stored in a database.
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
-        {
-            return $"${Iterations}${Convert.ToBase64String(Salt)}${Convert.ToBase64String(Hash)}";
-        }
+        public override string ToString() => $"${Iterations}${Convert.ToBase64String(Salt)}${Convert.ToBase64String(Hash)}";
 
         /// <summary>
         /// Used to parse password hash strings using <see cref="ToString()"/> back into a <see cref="PasswordHash"/>
@@ -52,8 +51,8 @@ namespace Jumble
         {
             string[] split = value.Split(new[] { '$' }, StringSplitOptions.RemoveEmptyEntries);
 
-            if (split.Length != 3 || !Int32.TryParse(split[0], out int iterations))
-                throw new ArgumentException("must be a valid combined hash", "combinedHash");
+            if (split.Length != 3 || !int.TryParse(split[0], out int iterations))
+                throw new ArgumentException("Value must be a valid combined hash.", nameof(value));
 
             byte[] salt = Convert.FromBase64String(split[1]);
 
@@ -66,9 +65,25 @@ namespace Jumble
         /// Gets the hash code for the value object.
         /// </summary>
         /// <returns>The hash code.</returns>
-        public override int GetHashCode()
+        public override int GetHashCode() => ToString().GetHashCode();
+
+        /// <summary>
+        /// Checks if two hashes are equal.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(PasswordHash other) => ByteCompare(Hash, other.Hash);
+
+        private static bool ByteCompare(byte[] a1, byte[] a2)
         {
-            return ToString().GetHashCode();
+            if (a1.Length != a2.Length)
+                return false;
+
+            for (int i = 0; i < a1.Length; i++)
+                if (a1[i] != a2[i])
+                    return false;
+
+            return true;
         }
 
         /// <summary>
@@ -77,16 +92,7 @@ namespace Jumble
         /// <param name="a">The first value object.</param>
         /// <param name="b">The second value object.</param>
         /// <returns>Returns true if both are null or the result of <see cref="Equals(object)"/>.</returns>
-        public static bool operator ==(PasswordHash a, IPasswordHash b)
-        {
-            if (a is null && b is null)
-                return true;
-
-            if (a is null || b is null)
-                return false;
-
-            return a.Equals(b);
-        }
+        public static bool operator ==(PasswordHash a, PasswordHash b) => a.Equals(b);
 
         /// <summary>
         /// The inequality operator to compare two value objects.
@@ -94,9 +100,6 @@ namespace Jumble
         /// <param name="a">The first value object.</param>
         /// <param name="b">The second value object.</param>
         /// <returns>Returns false if both objects are null or the inverse of <see cref="Equals(object)"/>.</returns>
-        public static bool operator !=(PasswordHash a, IPasswordHash b)
-        {
-            return !(a == b);
-        }
+        public static bool operator !=(PasswordHash a, PasswordHash b) => !(a == b);
     }
 }

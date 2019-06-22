@@ -5,7 +5,8 @@
     /// </summary>
     public interface IHashGenerator
     {
-        IPasswordHash Generate(string value);
-        IPasswordHash Generate(int iterations, byte[] salt, string value);
+        PasswordHash Generate(string password);
+        PasswordHash Generate(string password, int iterations, byte[] salt);
+        bool Validate(PasswordHash hash, string password);
     }
 }

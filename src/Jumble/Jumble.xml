@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jumble</name>
+    </assembly>
+    <members>
+        <member name="T:Jumble.HashGenerator">
+            <summary>
+            Standard implementation of <see cref="T:Jumble.IHashGenerator"/> used to generate password hashes
+            </summary>
+        </member>
+        <member name="M:Jumble.HashGenerator.Generate(System.String)">
+            <summary>
+            Generates a password hash using the options set by the application
+            </summary>
+            <param name="password">The password to be encypted</param>
+            <returns>A password hash</returns>
+        </member>
+        <member name="M:Jumble.HashGenerator.Generate(System.String,System.Int32,System.Byte[])">
+            <summary>
+            Generates a password hash when the salt and iterations are known.
+            </summary>
+            <param name="password">The password to be encrypted</param>
+            <param name="iterations">Number of iterations the encryption algorithm is run</param>
+            <param name="salt">The salt used to create the hash</param>
+            <returns>A password hash</returns>
+        </member>
+        <member name="M:Jumble.HashGenerator.Validate(Jumble.PasswordHash,System.String)">
+            <summary>
+            Validates a value against a hash.
+            </summary>
+            <param name="password">The password being validated</param>
+            <param name="hash">The hash used to validate</param>
+            <returns></returns>
+        </member>
+        <member name="T:Jumble.HashGeneratorOptions">
+            <summary>
+            Options used for generating password hashs.
+            </summary>
+        </member>
+        <member name="T:Jumble.SaltGenerator">
+            <summary>
+            Standard implementation to generate salts for use in a <see cref="T:Jumble.HashGenerator"/>
+            </summary>
+        </member>
+        <member name="T:Jumble.SaltGeneratorOptions">
+            <summary>
+            Options used to initialize the <see cref="T:Jumble.SaltGenerator"/>
+            </summary>
+        </member>
+    </members>
+</doc>
