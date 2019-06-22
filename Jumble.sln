@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{E29CC5CD-D92A-4163-8E3A-B8DD74278D04}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jumble.Abstractions", "src\Jumble.Abstractions\Jumble.Abstractions.csproj", "{3A0CFD6B-E84B-4384-9D05-C94DC0DC3B33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jumble", "src\Jumble\Jumble.csproj", "{926179BE-F9CC-40CF-840D-00625D9E5760}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{BC970E23-C302-4B9B-92DC-130FD122EA57}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D1D54153-EEE9-457D-98AE-73558FC1C3BC}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		logo.png = logo.png
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{958B1D89-07B3-4ECE-9741-3E94AAD14F26}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A0CFD6B-E84B-4384-9D05-C94DC0DC3B33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A0CFD6B-E84B-4384-9D05-C94DC0DC3B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A0CFD6B-E84B-4384-9D05-C94DC0DC3B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A0CFD6B-E84B-4384-9D05-C94DC0DC3B33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{926179BE-F9CC-40CF-840D-00625D9E5760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{926179BE-F9CC-40CF-840D-00625D9E5760}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{926179BE-F9CC-40CF-840D-00625D9E5760}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{926179BE-F9CC-40CF-840D-00625D9E5760}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{958B1D89-07B3-4ECE-9741-3E94AAD14F26} = {E29CC5CD-D92A-4163-8E3A-B8DD74278D04}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8FF5806E-F1CA-4F9F-A3B5-ACEBAF0980D0}
+	EndGlobalSection
+EndGlobal
