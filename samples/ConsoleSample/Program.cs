@@ -7,17 +7,8 @@ namespace ConsoleSample
     {
         static void Main(string[] args)
         {
-            // salt options: length.
-            var saltOptions = new SaltGeneratorOptions(32);
-
-            // salt generator
-            var saltGenerator = new SaltGenerator(saltOptions);
-
-            // hash options: iterations and length.
-            var hashOptions = new HashGeneratorOptions(32, 256);
-
-            // hash generator: options and salt generator.
-            var hashGenerator = new HashGenerator(hashOptions, saltGenerator);
+            // create a new hash generator
+            var hashGenerator = new HashGenerator();
 
             Console.WriteLine("Enter a password: ");
 

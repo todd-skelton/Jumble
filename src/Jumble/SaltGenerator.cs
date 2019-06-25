@@ -9,6 +9,10 @@ namespace Jumble
     {
         private readonly SaltGeneratorOptions _options;
 
+        public SaltGenerator() : this(new SaltGeneratorOptions(32))
+        {
+        }
+
         public SaltGenerator(SaltGeneratorOptions options)
         {
             _options = options;
