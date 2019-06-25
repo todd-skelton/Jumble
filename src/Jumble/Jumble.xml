@@ -9,6 +9,24 @@
             Standard implementation of <see cref="T:Jumble.IHashGenerator"/> used to generate password hashes
             </summary>
         </member>
+        <member name="M:Jumble.HashGenerator.#ctor">
+            <summary>
+            Initializes a new hash generator with default options and salt generator.
+            </summary>
+        </member>
+        <member name="M:Jumble.HashGenerator.#ctor(Jumble.HashGeneratorOptions)">
+            <summary>
+            Initializes a new hash generator with specified options and default salt generator.
+            </summary>
+            <param name="options">Hashing options to use.</param>
+        </member>
+        <member name="M:Jumble.HashGenerator.#ctor(Jumble.HashGeneratorOptions,Jumble.ISaltGenerator)">
+            <summary>
+            Initializes a new hash generator with specified options and salt generator.
+            </summary>
+            <param name="options">Hashing options to use.</param>
+            <param name="saltGenerator">Salt generator to use.</param>
+        </member>
         <member name="M:Jumble.HashGenerator.Generate(System.String)">
             <summary>
             Generates a password hash using the options set by the application
@@ -38,14 +56,69 @@
             Options used for generating password hashs.
             </summary>
         </member>
+        <member name="M:Jumble.HashGeneratorOptions.#ctor">
+            <summary>
+            Initializes hash generator options with 1000 iterations and a length of 512 bytes.
+            </summary>
+        </member>
+        <member name="M:Jumble.HashGeneratorOptions.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes hash generator options with specified iterations and length.
+            </summary>
+            <param name="iterations">Number of iterations to hash the password</param>
+            <param name="length">Length of the resulting hash in bytes</param>
+        </member>
+        <member name="P:Jumble.HashGeneratorOptions.Iterations">
+            <summary>
+            Number of iterations to hash the password
+            </summary>
+        </member>
+        <member name="P:Jumble.HashGeneratorOptions.Length">
+            <summary>
+            Length of the resulting hash in bytes
+            </summary>
+        </member>
         <member name="T:Jumble.SaltGenerator">
             <summary>
             Standard implementation to generate salts for use in a <see cref="T:Jumble.HashGenerator"/>
             </summary>
         </member>
+        <member name="M:Jumble.SaltGenerator.#ctor">
+            <summary>
+            Initializes a new salt generator with default options.
+            </summary>
+        </member>
+        <member name="M:Jumble.SaltGenerator.#ctor(Jumble.SaltGeneratorOptions)">
+            <summary>
+            Initializes a new salt generator with specified options.
+            </summary>
+            <param name="options">Salt generator options to use.</param>
+        </member>
+        <member name="M:Jumble.SaltGenerator.Generate">
+            <summary>
+            Generates a new salt.
+            </summary>
+            <returns>A new salt as a byte array.</returns>
+        </member>
         <member name="T:Jumble.SaltGeneratorOptions">
             <summary>
             Options used to initialize the <see cref="T:Jumble.SaltGenerator"/>
+            </summary>
+        </member>
+        <member name="M:Jumble.SaltGeneratorOptions.#ctor">
+            <summary>
+            Initializes salt generator options with a length of 32 bytes.
+            </summary>
+        </member>
+        <member name="M:Jumble.SaltGeneratorOptions.#ctor(System.Int32)">
+            <summary>
+            Initializes salt generator options with a specified length.
+            </summary>
+            <param name="length">Length of salt to generate in bytes.</param>
+        </member>
+        <member name="P:Jumble.SaltGeneratorOptions.Length">
+            <summary>
+            Length of salt to generate in bytes.
             </summary>
         </member>
     </members>

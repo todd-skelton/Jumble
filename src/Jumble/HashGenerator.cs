@@ -10,14 +10,26 @@ namespace Jumble
         private readonly HashGeneratorOptions _options;
         private readonly ISaltGenerator _saltGenerator;
 
-        public HashGenerator() : this(new HashGeneratorOptions(1000, 256))
+        /// <summary>
+        /// Initializes a new hash generator with default options and salt generator.
+        /// </summary>
+        public HashGenerator() : this(new HashGeneratorOptions())
         {
         }
 
+        /// <summary>
+        /// Initializes a new hash generator with specified options and default salt generator.
+        /// </summary>
+        /// <param name="options">Hashing options to use.</param>
         public HashGenerator(HashGeneratorOptions options) : this(options, new SaltGenerator())
         {
         }
 
+        /// <summary>
+        /// Initializes a new hash generator with specified options and salt generator.
+        /// </summary>
+        /// <param name="options">Hashing options to use.</param>
+        /// <param name="saltGenerator">Salt generator to use.</param>
         public HashGenerator(HashGeneratorOptions options, ISaltGenerator saltGenerator)
         {
             _options = options;

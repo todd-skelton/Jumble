@@ -5,6 +5,10 @@
     /// </summary>
     public interface ISaltGenerator
     {
+        /// <summary>
+        /// Generates a salt
+        /// </summary>
+        /// <returns></returns>
         byte[] Generate();
     }
 }

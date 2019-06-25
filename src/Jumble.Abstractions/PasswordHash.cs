@@ -7,6 +7,12 @@ namespace Jumble
     /// </summary>
     public struct PasswordHash : IEquatable<PasswordHash>
     {
+        /// <summary>
+        /// Initializes a new password hash.
+        /// </summary>
+        /// <param name="iterations">Number of iterations to run the hashing algorithm</param>
+        /// <param name="salt">Salt used to create the hash value</param>
+        /// <param name="hash">Hash value</param>
         public PasswordHash(int iterations, byte[] salt, byte[] hash)
         {
             Iterations = iterations;
@@ -74,6 +80,22 @@ namespace Jumble
         /// <returns></returns>
         public bool Equals(PasswordHash other) => ByteCompare(Hash, other.Hash);
 
+        /// <summary>
+        /// The equality operator to compare two hashes.
+        /// </summary>
+        /// <param name="a">The first value object.</param>
+        /// <param name="b">The second value object.</param>
+        /// <returns>Returns true if both are null or the result of <see cref="Equals(object)"/>.</returns>
+        public static bool operator ==(PasswordHash a, PasswordHash b) => a.Equals(b);
+
+        /// <summary>
+        /// The inequality operator to compare two hashes.
+        /// </summary>
+        /// <param name="a">The first value object.</param>
+        /// <param name="b">The second value object.</param>
+        /// <returns>Returns false if both objects are null or the inverse of <see cref="Equals(object)"/>.</returns>
+        public static bool operator !=(PasswordHash a, PasswordHash b) => !(a == b);
+
         private static bool ByteCompare(byte[] a1, byte[] a2)
         {
             if (a1.Length != a2.Length)
@@ -85,21 +107,5 @@ namespace Jumble
 
             return true;
         }
-
-        /// <summary>
-        /// The equality operator to compare two value objects.
-        /// </summary>
-        /// <param name="a">The first value object.</param>
-        /// <param name="b">The second value object.</param>
-        /// <returns>Returns true if both are null or the result of <see cref="Equals(object)"/>.</returns>
-        public static bool operator ==(PasswordHash a, PasswordHash b) => a.Equals(b);
-
-        /// <summary>
-        /// The inequality operator to compare two value objects.
-        /// </summary>
-        /// <param name="a">The first value object.</param>
-        /// <param name="b">The second value object.</param>
-        /// <returns>Returns false if both objects are null or the inverse of <see cref="Equals(object)"/>.</returns>
-        public static bool operator !=(PasswordHash a, PasswordHash b) => !(a == b);
     }
 }

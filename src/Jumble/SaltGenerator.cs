@@ -9,15 +9,26 @@ namespace Jumble
     {
         private readonly SaltGeneratorOptions _options;
 
-        public SaltGenerator() : this(new SaltGeneratorOptions(32))
+        /// <summary>
+        /// Initializes a new salt generator with default options.
+        /// </summary>
+        public SaltGenerator() : this(new SaltGeneratorOptions())
         {
         }
 
+        /// <summary>
+        /// Initializes a new salt generator with specified options.
+        /// </summary>
+        /// <param name="options">Salt generator options to use.</param>
         public SaltGenerator(SaltGeneratorOptions options)
         {
             _options = options;
         }
 
+        /// <summary>
+        /// Generates a new salt.
+        /// </summary>
+        /// <returns>A new salt as a byte array.</returns>
         public byte[] Generate()
         {
             var salt = new byte[_options.Length];

@@ -6,18 +6,56 @@
     <members>
         <member name="T:Jumble.IHashGenerator">
             <summary>
-            Interface used to implement a custom hash generator
+            Interface used to implement a hash generator
             </summary>
+        </member>
+        <member name="M:Jumble.IHashGenerator.Generate(System.String)">
+            <summary>
+            Generates a password hash struct from a password string.
+            </summary>
+            <param name="password">Password string</param>
+            <returns>A password hash struct</returns>
+        </member>
+        <member name="M:Jumble.IHashGenerator.Generate(System.String,System.Int32,System.Byte[])">
+            <summary>
+            Generates a password hash struct from a password string, number of iterations, and salt.
+            </summary>
+            <param name="password">Password string</param>
+            <param name="iterations">Number of iterations to hash</param>
+            <param name="salt">Salt to use</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jumble.IHashGenerator.Validate(Jumble.PasswordHash,System.String)">
+            <summary>
+            Validates a password string against a password hash struct
+            </summary>
+            <param name="hash">Hash to check against</param>
+            <param name="password">Password string being validated</param>
+            <returns>true if the password string matches the hash</returns>
         </member>
         <member name="T:Jumble.ISaltGenerator">
             <summary>
             Interface used to create a custom salt generator
             </summary>
         </member>
+        <member name="M:Jumble.ISaltGenerator.Generate">
+            <summary>
+            Generates a salt
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Jumble.PasswordHash">
             <summary>
             Standard password hash implementation
             </summary>
+        </member>
+        <member name="M:Jumble.PasswordHash.#ctor(System.Int32,System.Byte[],System.Byte[])">
+            <summary>
+            Initializes a new password hash.
+            </summary>
+            <param name="iterations">Number of iterations to run the hashing algorithm</param>
+            <param name="salt">Salt used to create the hash value</param>
+            <param name="hash">Hash value</param>
         </member>
         <member name="P:Jumble.PasswordHash.Iterations">
             <summary>
@@ -69,7 +107,7 @@
         </member>
         <member name="M:Jumble.PasswordHash.op_Equality(Jumble.PasswordHash,Jumble.PasswordHash)">
             <summary>
-            The equality operator to compare two value objects.
+            The equality operator to compare two hashes.
             </summary>
             <param name="a">The first value object.</param>
             <param name="b">The second value object.</param>
@@ -77,7 +115,7 @@
         </member>
         <member name="M:Jumble.PasswordHash.op_Inequality(Jumble.PasswordHash,Jumble.PasswordHash)">
             <summary>
-            The inequality operator to compare two value objects.
+            The inequality operator to compare two hashes.
             </summary>
             <param name="a">The first value object.</param>
             <param name="b">The second value object.</param>
