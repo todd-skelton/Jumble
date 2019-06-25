@@ -42,3 +42,42 @@ if (hashGenerator.Validate(hash, password))
     // authenticate user
 }
 ```
+
+### Hash Generator
+For simple use, the hash generator can be created with default options by calling the parameterless constructor.
+
+The default options will run the hash 1000 times with a salt length of 32 bytes and hash length of 512 bytes.
+
+```csharp
+var defaultGenerator = new HashGenerator();
+
+var hash = defaultGenerator.Generate(somePassword);
+```
+
+If you'd like to customize the options you can create a `HashGeneratorOptions` object to pass.
+
+Here we create a new hash generator that runs 100 times with a resulting hash of 1024 bytes.
+```csharp
+var options = new HashGeneratorOptions(100, 1024);
+
+var generator = new HashGenerator(options);
+
+var hash = generator.Generate(somePassword);
+```
+
+By default this will still use a salt of 32 bytes. You can optionally pass a salt generator to the hash generator if you'd like to customize it.
+
+The hash generator takes an interface for a salt generator, so you can use your own custom salt generator if you'd like.
+
+Here we create a salt generator that will generate a salt 64 bytes in length to pass to our hash generator.
+```csharp
+var saltOptions = new SaltGeneratorOptions(64);
+
+var saltGenerator = new SaltGenerator(saltOptions);
+
+var options = new HashGeneratorOptions(100, 1024);
+
+var hashGenerator = new HashGenerator(options, saltGenerator);
+
+var hash = hashGenerator.Generate(somePassword);
+```
