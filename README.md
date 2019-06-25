@@ -76,3 +76,25 @@ var hashGenerator = new HashGenerator(options, saltGenerator);
 
 var hash = hashGenerator.Generate(somePassword);
 ```
+
+## Password Hash
+When you call generate on the hash generator, you get back a password hash struct. This struct contains all the information needed to validate the hash later.
+
+Storing structs in a database isn't straightforward, so `ToString()` can be called in order to generate a string that can be stored.
+
+The resulting string contains 3 parts separated by the '$' symbol: the number of iterations, the salt, and the hash value. The salt and hash are converted from bytes to a Base64 string.
+```csharp
+var hash = hashGenerator.Generate(somePassword);
+
+user.PasswordHash = hash.ToString();
+
+db.SaveChanges();
+```
+
+When you want to validate the password, just call the validate function on your generator. You can pass the string directly, or the password hash struct if you have it.
+```csharp
+if (hashGenerator.Validate(user.PasswordHash, password))
+{
+    // authenticate user
+}
+```
