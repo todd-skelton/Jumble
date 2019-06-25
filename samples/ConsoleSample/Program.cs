@@ -15,7 +15,7 @@ namespace ConsoleSample
             string input = Console.ReadLine();
 
             // generates a new hash
-            var hash = hashGenerator.Generate(input);
+var hash = hashGenerator.Generate(input);
 
             Console.WriteLine();
 
