@@ -46,7 +46,7 @@ namespace Jumble
         /// Use this method to convert the hash into a string that can be stored in a database.
         /// </summary>
         /// <returns></returns>
-        public override string ToString() => $"${Iterations}${Convert.ToBase64String(Salt)}${Convert.ToBase64String(Hash)}";
+        public override string ToString() => $"{Iterations}${Convert.ToBase64String(Salt)}${Convert.ToBase64String(Hash)}";
 
         /// <summary>
         /// Used to parse password hash strings using <see cref="ToString()"/> back into a <see cref="PasswordHash"/>

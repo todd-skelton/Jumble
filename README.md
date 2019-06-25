@@ -42,7 +42,6 @@ if (hashGenerator.Validate(user.PasswordHash, password))
 For simple use, the hash generator can be created with default options by calling the parameterless constructor.
 
 The default options will run the hash 1000 times with a salt length of 32 bytes and hash length of 512 bytes.
-
 ```csharp
 var defaultGenerator = new HashGenerator();
 
