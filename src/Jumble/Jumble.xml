@@ -43,12 +43,20 @@
             <param name="salt">The salt used to create the hash</param>
             <returns>A password hash</returns>
         </member>
+        <member name="M:Jumble.HashGenerator.Validate(System.String,System.String)">
+            <summary>
+            Validates a value against a hash.
+            </summary>
+            <param name="hash">The hash string used to validate</param>
+            <param name="password">The password being validated</param>
+            <returns></returns>
+        </member>
         <member name="M:Jumble.HashGenerator.Validate(Jumble.PasswordHash,System.String)">
             <summary>
             Validates a value against a hash.
             </summary>
-            <param name="password">The password being validated</param>
             <param name="hash">The hash used to validate</param>
+            <param name="password">The password being validated</param>
             <returns></returns>
         </member>
         <member name="T:Jumble.HashGeneratorOptions">

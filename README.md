@@ -10,7 +10,7 @@ Simple password hashing library for .NET
 ### .NET CLI
 `dotnet add package Jumble`
 
-### Getting Started
+## Getting Started
 Using Jumble is very simple. 
 
 1. New up a hash generator.
@@ -30,20 +30,15 @@ user.PasswordHash = hash.ToString();
 db.SaveChanges();
 ```
 
-4. Use the parse function to convert the string back into a hash when you need to validate the user's password.
+4. Call the validate method on the hash generator to validate that the password string entered by the user matches the hash.
 ```csharp
-var hash = PasswordHash.Parse(user.PasswordHash);
-```
-
-5. Call the validate method on the hash generator to validate that the password string entered by the user matches the hash.
-```csharp
-if (hashGenerator.Validate(hash, password))
+if (hashGenerator.Validate(user.PasswordHash, password))
 {
     // authenticate user
 }
 ```
 
-### Hash Generator
+## Hash Generator
 For simple use, the hash generator can be created with default options by calling the parameterless constructor.
 
 The default options will run the hash 1000 times with a salt length of 32 bytes and hash length of 512 bytes.

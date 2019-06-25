@@ -65,8 +65,21 @@ namespace Jumble
         /// <summary>
         /// Validates a value against a hash.
         /// </summary>
+        /// <param name="hash">The hash string used to validate</param>
         /// <param name="password">The password being validated</param>
+        /// <returns></returns>
+        public bool Validate(string hash, string password)
+        {
+            var passwordHash = PasswordHash.Parse(hash);
+
+            return Validate(passwordHash, password);
+        }
+
+        /// <summary>
+        /// Validates a value against a hash.
+        /// </summary>
         /// <param name="hash">The hash used to validate</param>
+        /// <param name="password">The password being validated</param>
         /// <returns></returns>
         public bool Validate(PasswordHash hash, string password)
         {
