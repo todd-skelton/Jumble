@@ -36,7 +36,7 @@ namespace Jumble
         public byte[] Salt { get; }
 
         /// <summary>
-        /// Compares this value object to another.
+        /// Compares this password hash to another.
         /// </summary>
         /// <param name="obj">The object to compare.</param>
         /// <returns></returns>
@@ -68,7 +68,7 @@ namespace Jumble
         }
 
         /// <summary>
-        /// Gets the hash code for the value object.
+        /// Gets the hash code for the password hash.
         /// </summary>
         /// <returns>The hash code.</returns>
         public override int GetHashCode() => ToString().GetHashCode();
@@ -83,16 +83,16 @@ namespace Jumble
         /// <summary>
         /// The equality operator to compare two hashes.
         /// </summary>
-        /// <param name="a">The first value object.</param>
-        /// <param name="b">The second value object.</param>
+        /// <param name="a">The first password hash.</param>
+        /// <param name="b">The second password hash.</param>
         /// <returns>Returns true if both are null or the result of <see cref="Equals(object)"/>.</returns>
         public static bool operator ==(PasswordHash a, PasswordHash b) => a.Equals(b);
 
         /// <summary>
         /// The inequality operator to compare two hashes.
         /// </summary>
-        /// <param name="a">The first value object.</param>
-        /// <param name="b">The second value object.</param>
+        /// <param name="a">The first password hash.</param>
+        /// <param name="b">The second password hash.</param>
         /// <returns>Returns false if both objects are null or the inverse of <see cref="Equals(object)"/>.</returns>
         public static bool operator !=(PasswordHash a, PasswordHash b) => !(a == b);
 
