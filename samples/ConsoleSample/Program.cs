@@ -22,6 +22,8 @@ namespace ConsoleSample
             // prints the hash
             Console.WriteLine($"Your hash is: {hash}");
 
+            Console.WriteLine($"Hash length: {hash.ToString().Length}");
+
             Console.WriteLine();
 
             Console.WriteLine("Enter a password to see if it matches or -1 to quit.");

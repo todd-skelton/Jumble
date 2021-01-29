@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Title>Jumble Password Hashing</Title>
     <Description>Simple password hashing library for .NET.</Description>
-    <DocumentationFile>C:\Users\admin\Source\Repos\Jumble\src\Jumble\Jumble.xml</DocumentationFile>
+    <DocumentationFile>Jumble.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
